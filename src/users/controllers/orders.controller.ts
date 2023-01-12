@@ -9,7 +9,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { CreateOrderDto, UpdateOrderDto } from 'src/dtos/orders.dtos';
+import { CreateOrderDto, UpdateOrderDto } from '../dtos/orders.dtos';
 import { OrdersService } from '../services/orders.service';
 
 @Controller('orders')
