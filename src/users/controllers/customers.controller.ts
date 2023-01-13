@@ -9,9 +9,11 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customers.dtos';
 import { CustomersService } from '../services/customers.service';
 
+@ApiTags('customers')
 @Controller('customers')
 export class CustomersController {
   constructor(private ordersService: CustomersService) {}
