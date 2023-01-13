@@ -7,7 +7,6 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { UpdateUserDto, CreateUserDto } from '../dtos/users.dtos';
@@ -16,17 +15,18 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
-  get(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 100,
-    @Query('brand') brand: string,
-  ) {
+  findAll() {
     return this.usersService.findAll();
   }
 
   @Get(':id')
   getOne(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
+  }
+
+  @Get(':id/orders')
+  getOrders(@Param('id', ParseIntPipe) id: number) {
+    return this.usersService.getOrdersByUser(id);
   }
 
   @Post()
